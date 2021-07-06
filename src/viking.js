@@ -18,9 +18,7 @@ class Viking extends Soldier {
     super(health, strength);
     this.name = name;
   }
-  attack() {
-    return this.strength;
-  }
+
   receiveDamage(damage) {
     this.health -= damage;
     if (this.health > 0) {
@@ -29,14 +27,42 @@ class Viking extends Soldier {
       return `${this.name} has died in act of combat`;
     }
   }
-  battleCry()
+  battleCry() {
+    return 'Odin Owns You All!';
+  }
 }
 
 // Saxon
-class Saxon {}
+class Saxon extends Soldier {
+  constructor(health, strength) {
+    super(health, strength);
+  }
+  receiveDamage(damage) {
+    this.health -= damage;
+    if (this.health > 0) {
+      return `A Saxon has received ${damage} points of damage`;
+    } else {
+      return `A Saxon has died in combat`;
+    }
+  }
+}
 
 // War
-class War {}
+class War {
+  constructor() {
+    this.vikingArmy = [];
+    this.saxonArmy = [];
+  }
+  addViking(viking) {
+    this.vikingArmy.push(viking);
+  }
+  addSaxon(saxon) {
+    this.saxonArmy.push(saxon);
+  }
+  vikingAttack() {}
+  saxonAttack() {}
+  showStatus() {}
+}
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
